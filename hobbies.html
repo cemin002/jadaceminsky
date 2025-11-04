@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--color-bg);
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .nav-bar {
+            width: 100%;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'DM Serif Text', serif;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 1in;
+            margin-right: 1in;
+        }
+
+        .image-container {
+            height: 60vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .image-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .about-text {
+            font-size: 1.4em;
+            text-align: left;
+            max-width: none;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: #fafafa;
+            border-radius: 15px;
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-header h1 {
+            font-family: 'DM Serif Text', serif;
+            font-size: 2.5em;
+            color: var(--color-accent);
+            margin: 0 0 15px 0;
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 2em;
+            text-align: left;
+            margin: 0 0 25px 0;
+            width: 100%;
+            color: var(--color-accent);
+            font-family: 'DM Serif Text', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), transparent);
+        }
+
+        .baking-section {
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: none;
+            background-color: white;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .baking-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-content {
+            font-size: 1.2em;
+            text-align: left;
+            line-height: 1.8;
+            white-space: pre-line;
+            margin-bottom: 20px;
+        }
+
+        .section-flex {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-images {
+            width: 30%;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-images img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: white;
+            border: 3px solid var(--color-accent);
+            border-radius: 15px;
+            padding: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-images img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-content {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #444;
+            margin: 20px 0 30px;
+            padding: 0 60px;
+        }
+
+        .baking-images {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 60px;
+        }
+
+        .baking-images img {
+            width: calc(28% - 14px);
+            height: auto;
+            border: 3px solid var(--color-accent);
+            border-radius: 15px;
+            padding: 8px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .baking-images img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .baking-images {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 20px;
+            }
+            .baking-images img {
+                width: 100%;
+                max-width: 400px;
+            }
+            .section-content {
+                margin: 20px 0 30px;
+                padding: 0 20px;
+            }
+            .section-title {
+                margin: 0 0 25px 20px;
+                width: calc(100% - 40px);
+            }
+        }
+
+        .section-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .highlight-text {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 800px) {
+            .section-flex { 
+                flex-direction: column;
+                gap: 30px;
+            }
+            .section-images { 
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .section-text {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-tab">Home</a>
+            <a href="hobbies.html" class="nav-tab active">Hobbies</a>
+            <a href="duluth.html" class="nav-tab">Duluth</a>
+            <a href="resume.html" class="nav-tab">My Resume</a>
+            <a href="career.html" class="nav-tab">Career Interests</a>
+            <a href="game.html" class="nav-tab">Game</a>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="page-header">
+            <h1>My Hobbies & Interests</h1>
+            <p>Discover the activities and passions that bring joy to my life, from creating delicious treats to cherishing moments with family and friends.</p>
+        </div>
+
+        <div class="baking-section">
+            <div class="section-title">Baking</div>
+            <div class="section-content">Baking has been a passion of mine for many years. Trying out new recipes and perfecting old favorites has always been so much fun. My family always looked forward to the desserts I made for holidays, and I've baked almost every family member a birthday cake on their special day.
+
+What started as a hobby eventually grew into a small business. From 2021 to 2024, I ran Jada's Cakes, creating cupcakes, cakes, and cookies to order. I managed all orders and expenses on my own, which helped me develop strong time management skills. I truly loved what I did.
+
+Although I eventually decided to step away from the business, I still enjoy baking whenever I have the time. I especially love making banana bread for my friends—and maybe some chocolate chip cookies for my brothers, if they're lucky.</div>
+            <div class="baking-images">
+                <img src="images/RedVelvetCupcakes.jpg" alt="Red Velvet Cupcakes">
+                <img src="images/M&Mcookies.jpg" alt="M&M Cookies">
+                <img src="images/cupcakes.jpg" alt="Cupcakes">
+            </div>
+        </div>
+        <div class="baking-section">
+            <div class="section-title">Spending Time with Family and Friends</div>
+            <div class="section-content">I've always been very close with my family. We've spent countless hours together around the dining room table or watching Wheel of Fortune on TV. But the most cherished memories I have are from the time we spent on the lake in my hometown of Madison Lake. Growing up, my parents taught me how to wakeboard behind our ski boat, and I loved whipping my closest family friends off the tube. We also spent hours swimming at the sandbar, making those moments truly unforgettable.
+
+Some of my favorite memories are the ones I've made with my friends. Whether we're cheering at school games dressed head to toe in maroon and gold, going on spontaneous late-night adventures, or spending hours watching our show for the hundredth time, we always find a way to make ordinary moments unforgettable. It's the laughter that stays with you long after we say goodnight, the shared traditions that feel like our own little world, and the comfort of knowing we can always count on each other that make our time together so special.</div>
+            <div class="baking-images">
+                <img src="images/FamilyPhoto.jpg" alt="FamilyPhoto">
+                <img src="images/FriendPhoto.jpg" alt="FriendPhoto">
+                <img src="images/wakeboarding.jpg" alt="Wakeboarding">
+            </div>
+        </div>
+</body>
+</html>

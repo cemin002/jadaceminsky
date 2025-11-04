@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--color-bg);
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        /* Reset any existing rotate animation */
+        .welcome-video-container::after {
+            animation: none !important;
+        }
+
+
+
+        .nav-bar {
+            width: 100%;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'DM Serif Text', serif;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            margin-left: 1in;
+            margin-right: 1in;
+        }
+
+        .hero-banner {
+            width: 100%;
+            margin-top: 100px;
+            height: 600px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-surface);
+            overflow: visible;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--color-accent);
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            transform: translateX(50px);
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+
+        .hero-intro {
+            font-size: 5em;
+            margin: 0;
+            color: var(--color-accent);
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+            font-family: 'DM Serif Text', serif;
+        }
+
+        .hero-fullname {
+            font-size: 7em;
+            margin: 10px 0 0 0;
+            color: var(--color-accent);
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .welcome-video-container {
+            width: 450px;
+            height: 450px;
+            flex-shrink: 0;
+            position: relative;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .welcome-video-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 8px dotted var(--color-accent);
+            border-radius: 30px;
+            z-index: -1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .welcome-video-inner {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--color-accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            height: 100%;
+        }
+
+        .welcome-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .hero-banner-content {
+                gap: 40px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-banner-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .welcome-video-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        .welcome-video-container {
+            width: 450px;
+            height: auto;
+            flex-shrink: 0;
+            position: relative;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .welcome-video-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 8px dotted var(--color-accent);
+            border-radius: 30px;
+            z-index: -1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .welcome-video-inner {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--color-accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-video-inner p {
+            padding: 20px;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .welcome-video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border: 5px solid var(--color-primary);
+            border-radius: 15px;
+            margin: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .hero-name { font-size: 5em; }
+            .hero-lastname { font-size: 4em; }
+            .welcome-text { font-size: 3.5em; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero-name { font-size: 4em; }
+            .hero-lastname { font-size: 3em; }
+            .welcome-text { font-size: 2.5em; }
+        }
+
+        .intro-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            margin-top: 1in;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .intro-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .intro-text {
+            flex: 1;
+            font-size: 1.4em;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .intro-button-container {
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .intro-content { flex-direction: column; }
+            .intro-image { width: 100%; max-width: 300px; }
+        }
+
+        .intro-image {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            background-color: var(--color-surface);
+            border: 3px solid var(--color-border);
+            border-radius: 12px;
+            padding: 6px;
+        }
+        .linkedin-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--color-primary);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'DM Serif Text', serif;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .linkedin-button:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .photo-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px 0;
+        }
+
+        .photo-row img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: var(--color-surface);
+            border: 3px solid var(--color-border);
+            border-radius: 12px;
+            padding: 6px;
+        }
+
+        @media (max-width: 900px) {
+            .photo-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .photo-row { grid-template-columns: 1fr; }
+        }
+
+        .content-section {
+            padding: 30px;
+            margin: 20px 0;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-flex {
+            display: flex;
+            gap: 30px;
+        }
+
+        .content-column {
+            flex: 1;
+        }
+
+        .content-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .content-divider {
+            width: 2px;
+            background-color: var(--color-border);
+            margin: 0 15px;
+            align-self: stretch;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        .bullet-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 1.4em;
+            line-height: 1;
+        }
+
+        .bullet-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-flex {
+                flex-direction: column;
+            }
+            .content-divider {
+                width: 100%;
+                height: 2px;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-tab active">Home</a>
+            <a href="hobbies.html" class="nav-tab">Hobbies</a>
+            <a href="duluth.html" class="nav-tab">Duluth</a>
+            <a href="resume.html" class="nav-tab">My Resume</a>
+            <a href="career.html" class="nav-tab">Career Interests</a>
+            <a href="game.html" class="nav-tab">Game</a>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="hero-banner">
+            <div class="hero-banner-content">
+                <div class="welcome-video-container">
+                    <div class="welcome-video-inner">
+                        <video class="welcome-video" autoplay loop muted playsinline>
+                            <source src="videos/welcome (1).mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <div class="hero-intro">Hi, I'm</div>
+                    <div class="hero-fullname">Jada Ceminsky</div>
+                </div>
+            </div>
+        </div>
+        <div class="intro-section">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>I am a sophomore at the University of Minnesota Duluth, majoring in Marketing and Graphic Design. With my degree, I aspire to become a UX/UI designer at a company that values innovation, inclusivity, and collaboration.</p>
+                    
+                    <p>Throughout my page you get a glimpse into my life and some of the experiences that have shaped the goals I have for my life today, and don't forget to try my fun interactive game before you leave!</p>
+                    
+                    <div class="intro-button-container">
+                        <a href="https://www.linkedin.com/in/jada-ceminsky" target="_blank" rel="noopener" class="linkedin-button">Connect with me on LinkedIn!</a>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    <img src="images/headshot1.JPG" alt="Jada Ceminsky">
+                </div>
+            </div>
+        </div>
+        <div class="photo-row">
+            <img src="images/FamilyPhoto.jpg" alt="FamilyPhoto">
+            <img src="images/RedVelvetCupcakes.jpg" alt="RedVelvetCupcakes">
+            <img src="images/FriendPhoto.jpg" alt="FriendPhoto">
+        </div>
+        <div class="content-section">
+            <div class="content-flex">
+                <div class="content-column">
+                    <h3 style="color: var(--color-accent); font-family: 'DM Serif Text', serif; margin-bottom: 20px;">Family & Friends</h3>
+                    <ul class="bullet-list">
+                        <li>Whether it's lake days, movie nights, or road trips, my family is my core support system and one of my biggest sources of laughter</li>
+                        <li>I cherish the memories I share with my brothers and the relationship I've built with them over the years</li>
+                        <li>My friends are the ones who turn ordinary days into adventures, from coffee dates to late nights having the time of our lives</li>
+                    </ul>
+                </div>
+                <div class="content-divider"></div>
+                <div class="content-column">
+                    <h3 style="color: var(--color-accent); font-family: 'DM Serif Text', serif; margin-bottom: 20px;">Baking</h3>
+                    <ul class="bullet-list">
+                        <li>My kitchen turns into my creative space when I'm baking. Those red velvet cupcakes? They're my signature recipe, perfected after plenty of trial and error</li>
+                        <li>I love experimenting with new flavors and decorating techniques, but the best part is always seeing people's faces light up when they take that first bite</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

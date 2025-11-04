@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--color-bg);
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .nav-bar {
+            width: 100%;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'DM Serif Text', serif;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 1in;
+            margin-right: 1in;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: #fafafa;
+            border-radius: 15px;
+            color: #333333;
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .resume-header h1 {
+            font-family: 'DM Serif Text', serif;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .resume-header p {
+            font-size: 1.2em;
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        .resume-section {
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: none;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--color-border);
+        }
+
+        .section-title {
+            font-size: 2em;
+            text-align: left;
+            margin-bottom: 25px;
+            width: 100%;
+            color: var(--color-accent);
+            font-family: 'DM Serif Text', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), transparent);
+        }
+
+        .education-item, .work-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+            transition: transform 0.2s;
+        }
+
+        .education-item:hover, .work-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .institution {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--color-accent);
+        }
+
+        .date {
+            font-style: italic;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .details {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .skill-item {
+            background-color: white;
+            color: var(--color-accent);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: var(--color-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .job-title {
+            font-weight: bold;
+            margin: 12px 0 8px 0;
+            color: #444;
+            font-size: 1.1em;
+        }
+
+        .responsibilities {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+            line-height: 1.6;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        .responsibilities li::before {
+            content: '•';
+            color: var(--color-accent);
+            position: absolute;
+            left: 8px;
+            font-size: 1.2em;
+        }
+
+        .download-resume {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 3px solid var(--color-accent);
+            border-radius: 12px;
+            background-color: white;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-family: 'DM Serif Text', serif;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-resume:hover {
+            background-color: var(--color-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .skills-list { gap: 10px; }
+            .skill-item { 
+                padding: 8px 15px;
+                font-size: 1em;
+            }
+            .institution { font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-tab">Home</a>
+            <a href="hobbies.html" class="nav-tab">Hobbies</a>
+            <a href="duluth.html" class="nav-tab">Duluth</a>
+            <a href="resume.html" class="nav-tab active">My Resume</a>
+            <a href="career.html" class="nav-tab">Career Interests</a>
+            <a href="game.html" class="nav-tab">Game</a>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="resume-header">
+            <h1>Jada Ceminsky</h1>
+            <p>Marketing & Graphic Design Student at UMD</p>
+            <p>Aspiring UX/UI Designer | Creative Problem Solver | Team Player</p>
+        </div>
+        <div class="resume-section">
+            <div class="section-title">Education</div>
+            <div class="education-item">
+                <div class="institution">University of Minnesota, Duluth, MN</div>
+                <div class="date">August 2024 - Present</div>
+                <div class="details">Major: Marketing and Graphic Design</div>
+            </div>
+            <div class="education-item">
+                <div class="institution">Mankato East High School, Mankato, MN</div>
+                <div class="date">Graduated June 2024</div>
+                <div class="details">Graduated with Honors</div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <div class="section-title">Skills</div>
+            <div class="skills-list">
+                <div class="skill-item">Strong Organizational Skills</div>
+                <div class="skill-item">Adaptable</div>
+                <div class="skill-item">Dependable</div>
+                <div class="skill-item">Collaborative</div>
+                <div class="skill-item">Oral & Written Communication</div>
+                <div class="skill-item">Motivated</div>
+                <div class="skill-item">Creative</div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <div class="section-title">Work History</div>
+            <div class="work-item">
+                <div class="institution">Kato Cable, Mankato, MN</div>
+                <div class="date">June 2023 - August 2025</div>
+                <div class="job-title">Production Specialist I</div>
+                <ul class="responsibilities">
+                    <li>Assembled wire harnesses</li>
+                    <li>Prepped jobs</li>
+                    <li>Quality control</li>
+                </ul>
+                <div class="job-title">Receptionist Intern</div>
+                <div class="date">June 2024 - August 2024</div>
+                <ul class="responsibilities">
+                    <li>Greeted incoming visitors and customers</li>
+                    <li>Answered and directed incoming calls appropriately</li>
+                    <li>Maintained Excel spreadsheets for tracking and analysis of customer information</li>
+                    <li>Made copies for team members</li>
+                    <li>Maintained cleanliness of reception area, creating a welcoming inclusive atmosphere for all</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <div class="institution">Jada's Cakes, Madison Lake, MN</div>
+                <div class="date">May 2021 - August 2024</div>
+                <div class="job-title">Owner/Baker</div>
+                <ul class="responsibilities">
+                    <li>Entrepreneurial start-up, Certified Cottage Food Producer</li>
+                    <li>Created custom cupcakes, cakes, and cookies for clients</li>
+                    <li>Developed and maintained strong relationships with clients, resulting in repeat business and referrals</li>
+                    <li>Oversaw and managed business expenses</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <div class="institution">Greater Mankato Growth, Mankato MN</div>
+                <div class="date">February 2023 - June 2023</div>
+                <div class="job-title">Sports and Special Events Intern</div>
+                <ul class="responsibilities">
+                    <li>Assisted in event planning</li>
+                    <li>Business outreach through phone and email</li>
+                    <li>Contributed to content creation for social media posts</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <div class="institution">Ecumen Pathstone Living, Mankato, MN</div>
+                <div class="date">January 2022 - March 2023</div>
+                <div class="job-title">Dining Assistant</div>
+                <ul class="responsibilities">
+                    <li>Provided efficient and friendly dining assistance to residents</li>
+                    <li>Took orders and served food in a timely manner</li>
+                    <li>Maintained overall cleanliness, including sweeping, mopping, and sanitizing surfaces consistently</li>
+                </ul>
+            </div>
+        </div>
+        <div class="resume-section" style="text-align: center; background: transparent; border: none; box-shadow: none;">
+            <a href="files/Resume%202025%20(4).pdf" target="_blank" rel="noopener" class="download-resume">
+                Download Full Resume
+            </a>
+        </div>
+    </div>
+</body>
+</html>

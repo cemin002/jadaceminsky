@@ -1,0 +1,62 @@
+/* Earthy Pine theme variables and base styles */
+:root {
+    --color-bg: #FFF9F2;           /* warm off-white background */
+    --color-surface: #F7EFE5;      /* beige card/surface */
+    --color-primary: #8FAE62;      /* soft olive green */
+    --color-primary-dark: #6F8F4F; /* darker olive for hover */
+    --color-accent: #C8A97E;       /* tan accent */
+    --color-text: #2E2A25;         /* warm dark text */
+    --color-text-muted: #6E6358;   /* muted warm text */
+    --color-border: #E3D8C9;       /* light sand border */
+}
+
+html, body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* Shared nav styles that pages can inherit */
+.nav-bar {
+    background-color: var(--color-primary);
+}
+
+.nav-tab {
+    color: var(--color-text);
+}
+
+.nav-tab:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.nav-tab.active {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+/* Shared containers */
+.card, .content-section, .resume-section, .career-section, .baking-section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.section-title, .name, .hi {
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+.section-content, .about-text, .list-content, .details, .date {
+    color: var(--color-text);
+}
+
+a { color: var(--color-accent); }
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
